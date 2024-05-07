@@ -1,28 +1,17 @@
 import { z } from 'zod';
 const productSchemaValidation = z.object({
-    title: z.string().min(1),
+    title: z.string({ required_error: 'Title is required' }).min(1),
     slug: z
         .string()
         .min(1)
         .regex(/^[a-z0-9-]+$/),
-    category: z.object({
-        type: z.literal('ObjectId'),
-        ref: z.literal('Category')
-    }),
-    brand: z.object({
-        type: z.literal('ObjectId'),
-        ref: z.literal('Brand')
-    }),
-    variants: z.array(
-        z.object({
-            type: z.literal('ObjectId'),
-            ref: z.literal('Variant')
-        })
-    ),
-    sellingPrice: z.number().int().positive(),
-    markedPrice: z.number().int().positive(),
-    numReviews: z.number().int().positive(),
-    rating: z.number().int().positive().min(0).max(5),
+    vandor: z.string({ required_error: 'please choose vandor' }).min(1),
+    sellingPrice: z
+        .number({ required_error: 'Selling price is required' })
+        .positive(),
+    markedPrice: z.number().positive(),
+    numReviews: z.number().positive(),
+    rating: z.number().positive().min(0).max(5),
     newArrival: z.boolean()
 });
 export default productSchemaValidation;
