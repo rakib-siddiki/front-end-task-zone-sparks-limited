@@ -5,7 +5,9 @@ const variantSchema = new Schema({
     size: { type: String, required: true },
     color: { type: String, required: true },
     image: { type: String, required: true },
-    stock: { type: Number, required: true }
+    stock: { type: Number, required: true },
+    productId: { type: Schema.Types.ObjectId, ref: 'Product' }
 });
 
-export const Varient = models?.Varient ?? model('Varient', variantSchema);
+const VarientModel = models?.Varient ?? model('Varient', variantSchema);
+export default VarientModel;

@@ -5,4 +5,5 @@ const brandSchema = new Schema({
     slug: { type: String, required: true }
 });
 
-export const Brand = models?.Brand ?? model('Brand', brandSchema);
+const BrandModel = models?.Brand ?? model('Brand', brandSchema);
+export default BrandModel;

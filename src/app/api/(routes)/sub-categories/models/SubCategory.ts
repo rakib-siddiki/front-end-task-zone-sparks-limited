@@ -3,7 +3,6 @@ const { ObjectId } = Schema.Types;
 
 const subCategorySchema = new Schema(
     {
-        id: { type: Number, required: true },
         title: { type: String, required: true },
         slug: { type: String, required: true, unique: true },
         imd: { type: String, required: true },
@@ -13,5 +12,6 @@ const subCategorySchema = new Schema(
     { timestamps: true }
 );
 
-export const SubCategory =
+const SubCategoryModel =
     models?.SubCategory ?? model('SubCategory', subCategorySchema);
+export default SubCategoryModel;

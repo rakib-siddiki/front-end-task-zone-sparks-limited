@@ -14,4 +14,5 @@ const productSchema = new Schema({
     newArrival: { type: Boolean, required: true }
 });
 
-export const Product = models?.Product ?? model('Product', productSchema);
+const Product = models?.Product ?? model('Product', productSchema);
+export default Product;
