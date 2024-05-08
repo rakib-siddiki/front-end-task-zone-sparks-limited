@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Model, Schema, model, models } from 'mongoose';
 import { IVendor } from '../types';
 
 const vendorSchema = new Schema<IVendor>(
@@ -9,5 +9,7 @@ const vendorSchema = new Schema<IVendor>(
     { timestamps: true }
 );
 
-const VendorModel = models?.vendors ?? model('Vendor', vendorSchema);
+const VendorModel =
+    (models?.Vendor as Model<Document & IVendor>) ||
+    model('Vendor', vendorSchema);
 export default VendorModel;

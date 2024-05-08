@@ -1,7 +1,8 @@
-import { Schema, model, models } from 'mongoose';
+import { Model, Schema, model, models } from 'mongoose';
+import { ICategory } from '../types';
 const { ObjectId } = Schema.Types;
 
-const categorySchema = new Schema(
+const categorySchema = new Schema<ICategory>(
     {
         name: { type: String, required: true },
         slug: { type: String, required: true },
@@ -12,5 +13,7 @@ const categorySchema = new Schema(
     },
     { timestamps: true }
 );
-const CategoryModel = models?.categories ?? model('Category', categorySchema);
+const CategoryModel =
+    (models?.Category as Model<Document & ICategory>) ||
+    model('Category', categorySchema);
 export default CategoryModel;

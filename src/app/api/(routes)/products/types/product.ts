@@ -6,6 +6,10 @@ export default interface IProduct {
     category: ObjectId;
     brand: ObjectId;
     variants: ObjectId[];
+    vendor: ObjectId;
+    warranty: string;
+    tags: string[];
+    reviews: ObjectId[];
     sellingPrice: number;
     markedPrice: number;
     numReviews: number;

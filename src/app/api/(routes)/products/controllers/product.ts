@@ -30,7 +30,7 @@ export const onCreateProduct = async (payload: IProduct) => {
 export const onFindProduct = async (id: string) => {
     try {
         await dbConnect();
-        const Product = (await ProductModel.findById(id).populate([
+        const Product = (await ProductModel.findById(id)?.populate([
             'variants',
             'category',
             'brand',
@@ -47,7 +47,7 @@ export const onFindProduct = async (id: string) => {
 export const onFindProducts = async () => {
     try {
         await dbConnect();
-        const Product = await ProductModel.find({}).populate([
+        const Product = await ProductModel.find({})?.populate([
             'variants',
             'category',
             'brand',
