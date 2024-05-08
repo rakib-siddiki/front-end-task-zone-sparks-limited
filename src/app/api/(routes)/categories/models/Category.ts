@@ -12,6 +12,5 @@ const categorySchema = new Schema(
     },
     { timestamps: true }
 );
-
-const CategoryModel = models?.Category ?? model('Category', categorySchema);
+const CategoryModel = models?.categories ?? model('Category', categorySchema);
 export default CategoryModel;

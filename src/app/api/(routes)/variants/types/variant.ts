@@ -1,6 +1,8 @@
 import { ObjectId } from 'mongoose';
 
-export default interface IVarient {
+export default interface IVariant {
+    save(): unknown;
+    _id?: ObjectId;
     code: string;
     size: string;
     color: string;

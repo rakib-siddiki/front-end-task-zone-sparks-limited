@@ -16,7 +16,7 @@ export const onCreateBrand = async (payload: IBrand) => {
         const isBrandExisting = (await BrandModel.findOne(payload)) as IBrand;
         if (isBrandExisting) return errorResponse('Brand already exists', 400);
         const Brand = (await BrandModel.create(payload)) as IBrand;
-        if (!Brand) return errorResponse('SubCategory not found', 404);
+        if (!Brand) return errorResponse('Brand not found', 404);
         return successResponse(Brand);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -27,7 +27,7 @@ export const onFindBrand = async (id: string) => {
     try {
         await dbConnect();
         const Brand = (await BrandModel.findById(id)) as IBrand;
-        if (!Brand) return errorResponse('SubCategory not found', 404);
+        if (!Brand) return errorResponse('Brand not found', 404);
         return successResponse(Brand);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -38,7 +38,7 @@ export const onFindBrands = async () => {
     try {
         await dbConnect();
         const Brand = await BrandModel.find({});
-        if (!Brand) return errorResponse('SubCategory not found', 404);
+        if (!Brand) return errorResponse('Brand not found', 404);
         return successResponse(Brand);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -53,7 +53,7 @@ export const onUpdateBrand = async (_id: string, payload: IBrand) => {
         const Brand = (await BrandModel.findOneAndUpdate({ _id }, payload, {
             new: true
         })) as IBrand;
-        if (!Brand) return errorResponse('SubCategory not found', 404);
+        if (!Brand) return errorResponse('Brand not found', 404);
         return successResponse(Brand);
     } catch (error) {
         return errorResponse('Internal server error', 500);

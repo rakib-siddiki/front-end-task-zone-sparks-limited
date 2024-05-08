@@ -1,2 +1,2 @@
-import IVarient from './variant';
-export type { IVarient };
+import IVariant from './variant';
+export type { IVariant };

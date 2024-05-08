@@ -1,4 +1,4 @@
-export default interface IVandor {
+export default interface IVendor {
     shopLogo: string;
     shopName: string;
 }

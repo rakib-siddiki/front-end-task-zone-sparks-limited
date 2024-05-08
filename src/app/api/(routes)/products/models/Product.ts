@@ -7,7 +7,7 @@ const productSchema = new Schema(
         slug: { type: String, required: true, unique: true },
         category: { type: ObjectId, ref: 'Category' },
         brand: { type: ObjectId, ref: 'Brand' },
-        vandor: { type: ObjectId, ref: 'Vandor' },
+        Vendor: { type: ObjectId, ref: 'Vendor' },
         variants: [{ type: ObjectId, ref: 'Variant' }],
         tags: { type: [String] },
         reviews: [{ type: ObjectId, ref: 'Review' }],

@@ -5,7 +5,7 @@ const productSchemaValidation = z.object({
         .string()
         .min(1)
         .regex(/^[a-z0-9-]+$/),
-    vandor: z.string({ required_error: 'please choose vandor' }).min(1),
+    vendor: z.string({ required_error: 'please choose Vendor' }).min(1),
     sellingPrice: z
         .number({ required_error: 'Selling price is required' })
         .positive(),

@@ -1,1 +1,1 @@
-export { default as VariantValidationSchema } from './variant';
+export { default as VariantSchemaValidation } from './variant';

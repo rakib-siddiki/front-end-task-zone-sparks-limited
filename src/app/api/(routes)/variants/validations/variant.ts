@@ -1,18 +1,15 @@
 import { z } from 'zod';
 
-const VariantValidationSchema = z.object({
-    code: z.string().min(1, 'Code is required'),
-    size: z.string().min(1, 'Size is required'),
-    color: z.string().min(1, 'Color is required'),
-    image: z.string().min(1, 'Image is required'),
+const VariantSchemaValidation = z.object({
+    code: z.string({ required_error: 'Code is required' }).min(1),
+    size: z.string({ required_error: 'Size is required' }).min(1),
+    color: z.string({ required_error: 'Color is required' }).min(1),
+    image: z.string({ required_error: 'Image is required' }).min(1),
     stock: z
-        .number()
+        .number({ required_error: 'Stock is required' })
         .int('Stock must be an integer')
         .positive('Stock must be a positive number'),
-    productId: z.object({
-        type: z.literal('ObjectId'),
-        ref: z.literal('Product')
-    })
+    productId: z.string({ required_error: 'Product Id is required' }).min(1)
 });
 
-export default VariantValidationSchema;
+export default VariantSchemaValidation;

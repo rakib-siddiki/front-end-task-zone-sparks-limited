@@ -9,5 +9,5 @@ const variantSchema = new Schema({
     productId: { type: Schema.Types.ObjectId, ref: 'Product' }
 });
 
-const VarientModel = models?.Varient ?? model('Varient', variantSchema);
-export default VarientModel;
+const VariantModel = models?.variants ?? model('Variant', variantSchema);
+export default VariantModel;

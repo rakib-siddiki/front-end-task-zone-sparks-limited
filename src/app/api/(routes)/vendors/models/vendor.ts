@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
-import { IVandor } from '../types';
+import { IVendor } from '../types';
 
-const vendorSchema = new Schema<IVandor>(
+const vendorSchema = new Schema<IVendor>(
     {
         shopLogo: { type: String, required: true },
         shopName: { type: String, required: true }
@@ -9,5 +9,5 @@ const vendorSchema = new Schema<IVandor>(
     { timestamps: true }
 );
 
-const VendorModel = models?.Vendor ?? model('Vendor', vendorSchema);
+const VendorModel = models?.vendors ?? model('Vendor', vendorSchema);
 export default VendorModel;

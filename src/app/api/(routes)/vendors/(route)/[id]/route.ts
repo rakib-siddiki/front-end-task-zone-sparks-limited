@@ -1,19 +1,19 @@
 import { NextRequest } from 'next/server';
 import {
-    onDeleteVandor,
-    onFindVandor,
-    onUpdateVandor
+    onDeleteVendor,
+    onFindVendor,
+    onUpdateVendor
 } from '../../controllers';
 import { errorResponse } from '@/app/api/helpers';
-import { IVandor } from '../../types';
-// get Vandor by id
+import { IVendor } from '../../types';
+// get Vendor by id
 export const GET = async (
     req: NextRequest,
     { params }: { params: { id: string } }
 ) => {
     try {
         const { id } = params;
-        const res = await onFindVandor(id);
+        const res = await onFindVendor(id);
         return res;
     } catch (err) {
         return errorResponse('Internal server error');
@@ -27,8 +27,8 @@ export const PUT = async (
 ) => {
     try {
         const { id } = params;
-        const data = (await req.json()) as IVandor;
-        const res = await onUpdateVandor(id, data);
+        const data = (await req.json()) as IVendor;
+        const res = await onUpdateVendor(id, data);
         return res;
     } catch (err) {
         return errorResponse('Internal server error');
@@ -42,7 +42,7 @@ export const DELETE = async (
 ) => {
     try {
         const { id } = params;
-        const res = await onDeleteVandor(id);
+        const res = await onDeleteVendor(id);
 
         return res;
     } catch (err) {

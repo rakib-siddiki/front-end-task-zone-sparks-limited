@@ -20,7 +20,7 @@ export const onCreateProduct = async (payload: IProduct) => {
             return errorResponse('Product already exists', 400);
         }
         const Product = (await ProductModel.create(payload)) as IProduct;
-        if (!Product) return errorResponse('SubCategory not found', 404);
+        if (!Product) return errorResponse('Product not found', 404);
         return successResponse(Product);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -35,9 +35,9 @@ export const onFindProduct = async (id: string) => {
             'category',
             'brand',
             'reviews',
-            'vandor'
+            'vendor'
         ])) as IProduct;
-        if (!Product) return errorResponse('SubCategory not found', 404);
+        if (!Product) return errorResponse('Product not found', 404);
         return successResponse(Product);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -53,7 +53,7 @@ export const onFindProducts = async () => {
             'brand',
             'reviews'
         ]);
-        if (!Product) return errorResponse('SubCategory not found', 404);
+        if (!Product) return errorResponse('Product not found', 404);
         return successResponse(Product);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -68,7 +68,7 @@ export const onUpdateProduct = async (_id: string, payload: IProduct) => {
         const Product = (await ProductModel.findOneAndUpdate({ _id }, payload, {
             new: true
         })) as IProduct;
-        if (!Product) return errorResponse('SubCategory not found', 404);
+        if (!Product) return errorResponse('Product not found', 404);
         return successResponse(Product);
     } catch (error) {
         return errorResponse('Internal server error', 500);
@@ -81,7 +81,7 @@ export const onDeleteProduct = async (_id: string) => {
         const Product = (await ProductModel.findByIdAndDelete({
             _id
         })) as IProduct;
-        if (!Product) return errorResponse('SubCategory not found', 404);
+        if (!Product) return errorResponse('Product not found', 404);
         return successResponse('Product deleted successfully');
     } catch (error) {
         return errorResponse('Failed to delete Product');
