@@ -47,11 +47,17 @@
         --input: 215 27.9% 16.9%;
         --ring: 216 12.2% 83.9%;
     }
+
+    body {
+        @apply text-base text-gray-800 dark:text-gray-200 font-normal font-inter;
+    }
 }
+
 @layer base {
     * {
         @apply border-border;
     }
+
     body {
         @apply bg-background text-foreground;
     }
