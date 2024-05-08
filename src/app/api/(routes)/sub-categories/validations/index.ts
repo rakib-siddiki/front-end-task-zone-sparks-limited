@@ -1,1 +1,1 @@
-export { default as SubCategoryValidationSchema } from './subCategory';
+export { default as SubCategorySchemaValidation } from './subCategory';

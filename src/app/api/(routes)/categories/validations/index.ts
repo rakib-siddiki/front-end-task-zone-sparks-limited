@@ -1,1 +1,1 @@
-export { default as CategoryValidationSchema } from './category';
+export { default as CategorySchemaValidation } from './category';

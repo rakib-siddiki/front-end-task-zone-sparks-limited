@@ -1,13 +1,10 @@
 import { z } from 'zod';
 
-const SubCategoryValidationSchema = z.object({
-    title: z.string().min(1, 'Title is required'),
-    slug: z.string().min(1, 'Slug is required').url('Slug must be a valid URL'),
-    imd: z.string().min(1, 'IMD is required'),
-    imdSlug: z.string().min(1, 'IMD slug is required'),
-    catId: z.object({
-        type: z.literal('ObjectId'),
-        ref: z.literal('Category')
-    })
+const SubCategorySchemaValidation = z.object({
+    title: z.string({ required_error: 'Title is required' }).min(1),
+    slug: z.string({ required_error: 'Slug is required' }).min(1),
+    imd: z.string({ required_error: 'IMD is required' }).min(1),
+    imdSlug: z.string({ required_error: 'IMD slug is required' }).min(1),
+    categoryId: z.string({ required_error: 'Category is required' }).min(1)
 });
-export default SubCategoryValidationSchema;
+export default SubCategorySchemaValidation;
