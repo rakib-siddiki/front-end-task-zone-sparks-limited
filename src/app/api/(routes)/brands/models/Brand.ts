@@ -1,7 +1,8 @@
 import { Schema, model, models } from 'mongoose';
+import { IBrand } from '../types';
 
-const brandSchema = new Schema({
-    title: { type: String, required: true },
+const brandSchema = new Schema<IBrand>({
+    name: { type: String, required: true },
     slug: { type: String, required: true }
 });
 

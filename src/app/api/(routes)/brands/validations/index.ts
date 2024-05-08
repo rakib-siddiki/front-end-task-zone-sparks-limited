@@ -1,1 +1,1 @@
-export { default as BrandValidationSchema } from './brand';
+export { default as BrandSchemaValidation } from './brand';

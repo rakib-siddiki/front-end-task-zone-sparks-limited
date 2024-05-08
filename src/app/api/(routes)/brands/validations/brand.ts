@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-const BrandValidationSchema = z.object({
-    title: z.string().min(1, 'Title is required'),
-    slug: z.string().min(1, 'Slug is required')
+const BrandSchemaValidation = z.object({
+    name: z.string({ required_error: 'Name is required' }).min(1),
+    slug: z.string({ required_error: 'Slug is required' }).min(1)
 });
 
-export default BrandValidationSchema;
+export default BrandSchemaValidation;

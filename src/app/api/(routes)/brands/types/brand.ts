@@ -1,4 +1,4 @@
 export default interface IBrand {
-    title: string;
+    name: string;
     slug: string;
 }
