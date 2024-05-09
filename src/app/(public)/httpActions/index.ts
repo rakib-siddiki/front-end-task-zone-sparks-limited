@@ -2,10 +2,9 @@ export * from './products';
 import { API_BASE_URL } from '@/configs/env';
 
 export const http = {
-    get: async (path: string, revalidate?: number, cache?: RequestCache) => {
+    get: async (path: string, revalidate?: number) => {
         try {
             const res = await fetch(API_BASE_URL + path, {
-                cache: cache || 'force-cache',
                 next: {
                     revalidate: revalidate || 60
                 }

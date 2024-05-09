@@ -6,7 +6,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     inputClass?: string;
 }
 const InputField = forwardRef<HTMLInputElement, IProps>(
-    ({ className, label, ...rest }, ref) => {
+    ({ className, inputClass, label, ...rest }, ref) => {
         const id = Math.random() * 10;
         return (
             <>
@@ -18,7 +18,7 @@ const InputField = forwardRef<HTMLInputElement, IProps>(
                         {label}
                     </label>
                 )}
-                <span className={twMerge('relative w-full', rest?.inputClass)}>
+                <span className={twMerge('relative w-full', inputClass)}>
                     <Icons.Search className='absolute top-1/2 -translate-y-1/2 left-3' />
                     <input
                         {...rest}

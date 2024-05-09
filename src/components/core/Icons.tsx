@@ -6,7 +6,8 @@ import {
     X,
     Eye,
     EyeOff,
-    ShoppingCart
+    ShoppingCart,
+    Star
 } from 'lucide-react';
 
 export const Icons = {
@@ -17,6 +18,7 @@ export const Icons = {
     Eye,
     EyeOff,
     ShoppingCart,
+    Star,
     EmptyBox: (props: LucideProps) => (
         <svg
             {...props}

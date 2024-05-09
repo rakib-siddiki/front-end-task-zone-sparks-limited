@@ -64,16 +64,17 @@ interface IReviewResponse {
 }
 
 interface IProductResponse {
-    _id: string;
+    _id?: string;
     title: string;
     slug: string;
+    image: string;
     tags?: string[];
     warranty: string;
     sellingPrice: number;
     markedPrice: number;
     numReviews: number;
     rating: number;
-    newArrival: boolean;
+    newArrival: 'Yes' | 'No';
     category: ICategoryResponse;
     brand: IBrandResponse;
     vendor: IVendorResponse;

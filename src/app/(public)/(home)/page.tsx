@@ -1,8 +1,14 @@
-const HomePage = () => {
-    
+import { fetchProducts } from '../httpActions';
+import { Wrapper } from './components';
+
+const HomePage = async () => {
+    const data = await fetchProducts();
+    if (!data) {
+        return <> Not Data Found</>;
+    }
     return (
         <>
-            <h1>Home</h1>
+            <Wrapper data={data} />
         </>
     );
 };

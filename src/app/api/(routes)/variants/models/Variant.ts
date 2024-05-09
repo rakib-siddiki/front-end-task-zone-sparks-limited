@@ -1,6 +1,7 @@
-import { Schema, model, models } from 'mongoose';
+import { Model, Schema, model, models } from 'mongoose';
+import { IVariant } from '../types';
 
-const variantSchema = new Schema({
+const variantSchema = new Schema<IVariant>({
     code: { type: String, required: true },
     size: { type: String, required: true },
     color: { type: String, required: true },
@@ -9,5 +10,7 @@ const variantSchema = new Schema({
     productId: { type: Schema.Types.ObjectId, ref: 'Product' }
 });
 
-const VariantModel = models?.variants ?? model('Variant', variantSchema);
+const VariantModel =
+    (models?.Variant as Model<Document & IVariant>) ??
+    model('Variant', variantSchema);
 export default VariantModel;

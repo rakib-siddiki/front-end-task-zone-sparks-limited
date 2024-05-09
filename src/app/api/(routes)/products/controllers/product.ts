@@ -7,6 +7,7 @@ import {
 import { IProduct } from '../types';
 import { ProductSchemaValidation } from '../validations';
 import { ProductModel } from '../models';
+import { productUpdateSchema } from '../validations/product';
 
 export const onCreateProduct = async (payload: IProduct) => {
     try {
@@ -47,12 +48,13 @@ export const onFindProduct = async (id: string) => {
 export const onFindProducts = async () => {
     try {
         await dbConnect();
-        const Product = await ProductModel.find({})?.populate([
+        const Product = (await ProductModel.find({}).populate([
             'variants',
             'category',
             'brand',
-            'reviews'
-        ]);
+            'reviews',
+            'vendor'
+        ])) as IProduct[];
         if (!Product) return errorResponse('Product not found', 404);
         return successResponse(Product);
     } catch (error) {
@@ -62,9 +64,9 @@ export const onFindProducts = async () => {
 
 export const onUpdateProduct = async (_id: string, payload: IProduct) => {
     try {
-        const { error } = ProductSchemaValidation.safeParse(payload);
-        if (error) return zodErrorResponse(error);
         await dbConnect();
+        const { error } = productUpdateSchema.safeParse(payload);
+        if (error) return zodErrorResponse(error);
         const Product = (await ProductModel.findOneAndUpdate({ _id }, payload, {
             new: true
         })) as IProduct;

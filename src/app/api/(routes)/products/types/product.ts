@@ -5,6 +5,7 @@ export default interface IProduct {
     slug: string;
     category: ObjectId;
     brand: ObjectId;
+    image: string;
     variants: ObjectId[];
     vendor: ObjectId;
     warranty: string;
@@ -12,7 +13,6 @@ export default interface IProduct {
     reviews: ObjectId[];
     sellingPrice: number;
     markedPrice: number;
-    numReviews: number;
     rating: number;
-    newArrival: boolean;
+    newArrival: 'Yes' | 'No';
 }
