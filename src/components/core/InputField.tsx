@@ -25,10 +25,13 @@ const InputField = forwardRef<HTMLInputElement, IProps>(
                         ref={ref}
                         id={`input_${id}`}
                         className={twMerge(
-                            'w-full border dark:bg-gray-700/50 border-gray-100 dark:border-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 text-sm pl-8 py-2.5  rounded outline-none font-light  placeholder:text-gray-100',
+                            'w-full border dark:bg-gray-700/50 border-gray-100 dark:border-gray-700 focus:border-gray-300 dark:focus:border-gray-600 transition duration-150 text-sm px-8 py-2.5  rounded outline-none font-light  placeholder:text-gray-100',
                             className
                         )}
                     />
+                    {rest.value && (
+                        <Icons.X className='absolute top-1/2 -translate-y-1/2 right-3 size-5 stroke-gray-300' />
+                    )}
                 </span>
             </>
         );

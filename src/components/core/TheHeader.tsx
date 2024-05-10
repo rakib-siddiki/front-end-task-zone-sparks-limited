@@ -1,11 +1,13 @@
 import React from 'react';
-import { InputField, ThemeSwitcher } from '.';
+import { SearchInput, ThemeSwitcher } from '.';
 
 import { Icons } from './Icons';
 import { LinksDesktop } from './LinksDesktop';
 import CustomAvatar from './avatar/CustomAvatar';
 import Link from 'next/link';
-const TheHeader = () => {
+import { fetchProducts } from '@/app/(public)/httpActions';
+const TheHeader = async () => {
+    const data = await fetchProducts();
     return (
         <header className='container'>
             <nav className='flex gap-5 justify-between items-center sm:gap-5 py-3'>
@@ -13,12 +15,9 @@ const TheHeader = () => {
                     Logo
                 </Link>
                 <LinksDesktop />
-                <InputField
-                    inputClass='max-xs:hidden'
-                    className='py-1.5 sm:py-2.5'
-                    placeholder='Search..'
-                    type='search'
-                />
+                <div className='max-xs:hidden w-full relative'>
+                    <SearchInput products={data ?? []} />
+                </div>
                 <div className='w-1/5 flex justify-end items-center gap-3'>
                     <span className='relative'>
                         <Icons.ShoppingCart className='size-6 dark:stroke-gray-200' />
@@ -30,11 +29,9 @@ const TheHeader = () => {
                     <ThemeSwitcher />
                 </div>
             </nav>
-            <InputField
-                inputClass='xs:hidden'
-                placeholder='Search..'
-                type='search'
-            />
+            <div className='xs:hidden relative'>
+                <SearchInput products={data ?? []} />
+            </div>
         </header>
     );
 };

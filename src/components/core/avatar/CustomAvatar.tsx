@@ -24,7 +24,7 @@ const CustomAvatar = () => {
                 </Avatar>
                 <div
                     ref={menuRef}
-                    className={`${dropdownOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition-all duration-300`}
+                    className={`${dropdownOpen ? 'block' : 'hidden pointer-events-none'} transition-all duration-300`}
                 >
                     <span
                         className='size-5 border-t border-l border-gray-50 dark:border-gray-700 bg-gray-25 dark:bg-gray-700 absolute 

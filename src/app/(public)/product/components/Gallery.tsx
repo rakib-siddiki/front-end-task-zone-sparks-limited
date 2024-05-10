@@ -59,11 +59,11 @@ const Gallery: FC<IProps> = ({ ...props }) => {
         <>
             <section className='grid grid-cols-12 gap-2'>
                 <div className='max-md:flex gap-3 col-span-12 md:col-span-2  h-32 md:h-[580px] overflow-scroll no-scrollbar md:space-y-3 md:order-first order-last'>
-                    {allImages?.map((image, id) => (
+                    {allImages?.map((image, i) => (
                         <>
                             <Image
-                                key={id}
-                                onClick={() => goToSlide(id)}
+                                key={image}
+                                onClick={() => goToSlide(i)}
                                 height={500}
                                 width={500}
                                 src={image}
@@ -76,11 +76,11 @@ const Gallery: FC<IProps> = ({ ...props }) => {
                 <div className='col-span-12 md:col-span-10 '>
                     <div className='relative'>
                         <Slider {...settings} ref={sliderRef}>
-                            {allImages?.map((img, id) => (
+                            {allImages?.map((image, i) => (
                                 <InnerImageZoom
-                                    src={img}
-                                    zoomSrc={img}
-                                    key={id}
+                                    src={image}
+                                    zoomSrc={image}
+                                    key={i}
                                     className='max-md:h-[580px] max-h-[700px] overflow-hidden'
                                 />
                             ))}

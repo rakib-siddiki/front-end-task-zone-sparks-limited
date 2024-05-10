@@ -13,7 +13,6 @@ export const fetchProducts = async (): Promise<TProduct | null> => {
 };
 
 export const fetchProduct = async (id: string): Promise<TProduct | null> => {
-    console.log('🚀 > fetchProduct > id:', id);
     try {
         const res = (await http.get(`/products/${id}`, 60)) as TProduct;
         return res;

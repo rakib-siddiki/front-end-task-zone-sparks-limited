@@ -61,7 +61,6 @@ const ProductDetails: FC<IProps> = ({ ...props }) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const { title, rating, sellingPrice, warranty, vendor, variants, reviews } =
         props;
-    console.log('🚀 > variants:', variants);
     const [formData, setFormData] = useState({
         color: 'Multi',
         size: 'XL',
