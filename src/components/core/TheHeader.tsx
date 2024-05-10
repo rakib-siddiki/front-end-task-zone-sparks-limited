@@ -4,11 +4,14 @@ import { InputField, ThemeSwitcher } from '.';
 import { Icons } from './Icons';
 import { LinksDesktop } from './LinksDesktop';
 import CustomAvatar from './avatar/CustomAvatar';
+import Link from 'next/link';
 const TheHeader = () => {
     return (
         <header className='container'>
             <nav className='flex gap-5 justify-between items-center sm:gap-5 py-3'>
-                <h2 className='text-2xl font-bold'>Logo</h2>
+                <Link href='/' className='text-2xl font-bold inline-block'>
+                    Logo
+                </Link>
                 <LinksDesktop />
                 <InputField
                     inputClass='max-xs:hidden'

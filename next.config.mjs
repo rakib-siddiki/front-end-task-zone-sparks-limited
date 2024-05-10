@@ -5,6 +5,10 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'cdn.easyfrontend.com'
+            },
+            {
+                protocol: 'https',
+                hostname: 'i.ibb.co'
             }
         ]
     }

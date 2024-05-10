@@ -47,9 +47,13 @@ interface IVendorResponse {
 
 interface IVariantResponse {
     _id: string;
-    title: string;
-    slug: string;
-    price: number;
+    price?: number;
+    code: string;
+    size: string;
+    color: string;
+    image: string;
+    stock: number;
+    productId: string;
 }
 
 interface IReviewResponse {

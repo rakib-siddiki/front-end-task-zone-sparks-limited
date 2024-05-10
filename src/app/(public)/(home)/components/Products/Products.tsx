@@ -12,7 +12,7 @@ const Products: FC<IProps> = ({ data }) => {
         <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
             {(data ?? []).map(({ _id, ...rest }) => (
                 <div key={_id} className='relative'>
-                    <Link href={`/products/${_id}`} className='block'>
+                    <Link href={`/product/${_id}`} className='block'>
                         <ProductCard {...rest} />
                     </Link>
                     <CartButton className='absolute right-4 bottom-4' />

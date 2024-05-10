@@ -16,9 +16,9 @@ export const onCreateVariant = async (payload: IVariant) => {
         const { error } = VariantSchemaValidation.safeParse(payload);
         if (error) return zodErrorResponse(error);
         await dbConnect();
-        const isVariantExisting = (await VariantModel.findOne(
-            payload
-        )) as IVariant;
+        const isVariantExisting = (await VariantModel.findOne({
+            $or: [{ code: payload.code }, { size: payload.size }]
+        })) as IVariant;
         if (isVariantExisting)
             return errorResponse('Variant already exists', 400);
         const Variant = new VariantModel(payload) as IVariant;

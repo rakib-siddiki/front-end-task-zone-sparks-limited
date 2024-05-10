@@ -10,7 +10,10 @@ const CartButton: FC<IProps> = ({ className }) => {
         <Button
             onClick={(e) => e.stopPropagation()}
             size='sm'
-            className={cn('p-3 rounded-full size-10', className)}
+            className={cn(
+                'p-3 rounded-full size-10 dark:text-gray-50 dark:bg-gray-600',
+                className
+            )}
         >
             <Icons.ShoppingCart className='size-5' />
         </Button>
