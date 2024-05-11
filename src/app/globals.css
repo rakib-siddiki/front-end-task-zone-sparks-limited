@@ -47,12 +47,33 @@
         --input: 215 27.9% 16.9%;
         --ring: 216 12.2% 83.9%;
     }
+
+    body {
+        @apply bg-gray-25 text-base text-gray-800 dark:text-gray-200 font-normal font-inter;
+    }
 }
+
 @layer base {
     * {
         @apply border-border;
     }
+
     body {
         @apply bg-background text-foreground;
     }
+}
+
+@layer utilities{
+    /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
 }

@@ -4,4 +4,4 @@ export const SITE_DOMAIN =
     process.env.NEXT_PUBLIC_SITE_DOMAIN || 'http://localhost:3000/';
 export const MONGODB_URI =
     process.env.NEXT_PUBLIC_MONGODB_URI ||
-    'mongodb+srv://kabirnexlent:LcYYhHVL6ffeG1F1@cluster0.4ecv9oc.mongodb.net/Truup';
+    'mongodb+srv://rmrakib901:v0Z6ZF7fyaQHgzWh@cluster0.oqhpi0s.mongodb.net/zone-spark-e-commerce';

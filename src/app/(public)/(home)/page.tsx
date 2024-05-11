@@ -1,8 +1,15 @@
-const HomePage = () => {
-    
+import { FallBackData } from '@/components/core';
+import { fetchProducts } from '../httpActions';
+import { Wrapper } from './components';
+
+const HomePage = async () => {
+    const data = await fetchProducts();
+    if (!data) {
+        return <FallBackData />;
+    }
     return (
         <>
-            <h1>Home</h1>
+            <Wrapper data={data} />
         </>
     );
 };
