@@ -32,7 +32,7 @@ export const onCreateCategory = async (payload: ICategory) => {
 export const onFindCategory = async (id: string) => {
     try {
         await dbConnect();
-        const Category = (await CategoryModel.findById(id).populate(
+        const Category = (await CategoryModel.findById(id)?.populate(
             'subCategoryId'
         )) as ICategory;
         if (!Category) return errorResponse('Category not found', 404);
@@ -45,7 +45,9 @@ export const onFindCategory = async (id: string) => {
 export const onFindSubCategories = async () => {
     try {
         await dbConnect();
-        const Category = await CategoryModel.find({}).populate('subCategoryId');
+        const Category = await CategoryModel.find({})?.populate(
+            'subCategoryId'
+        );
         if (!Category) return errorResponse('Category not found', 404);
         return successResponse(Category);
     } catch (error) {

@@ -68,6 +68,8 @@ interface IReviewResponse {
 }
 
 interface IProductResponse {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
     _id?: string;
     title: string;
     slug: string;

@@ -1,4 +1,6 @@
 import { TheHeader } from '@/components/core';
+import { NavigationButtons } from './(home)/components';
+import { ToggleProvider } from '@/providers/toggle-provider';
 
 export default function PublicLayout({
     children
@@ -7,8 +9,11 @@ export default function PublicLayout({
 }) {
     return (
         <div className='min-h-screen relative'>
-            <TheHeader />
-            <main>{children}</main>
+            <ToggleProvider>
+                <TheHeader />
+                <NavigationButtons />
+                <main>{children}</main>
+            </ToggleProvider>
         </div>
     );
 }

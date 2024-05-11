@@ -1,15 +1,20 @@
 import { IProductResponse } from '@/app/(public)/types';
 import React, { FC } from 'react';
-import { NavigationButtons, Products } from '.';
+import { FilterOptions } from '.';
+import { http } from '../../httpActions';
+import { FallBackData } from '@/components/core';
+import { ISubCategory } from '@/app/api/(routes)/sub-categories/types';
 
 interface IProps {
     data: IProductResponse[];
 }
-export const Wrapper: FC<IProps> = ({ data }) => {
+export const Wrapper: FC<IProps> = async ({ data }) => {
+    const subCat = (await http.get('/sub-categories')) as ISubCategory[];
+    if (!subCat) return <FallBackData />;
+
     return (
         <section className='container'>
-            <NavigationButtons />
-            <Products data={data} />
+            <FilterOptions data={data} subCat={subCat} />
         </section>
     );
 };

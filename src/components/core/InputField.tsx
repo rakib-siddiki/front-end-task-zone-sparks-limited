@@ -4,6 +4,7 @@ import { Icons } from './Icons';
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     inputClass?: string;
+    serchIcon?: boolean;
 }
 const InputField = forwardRef<HTMLInputElement, IProps>(
     ({ className, inputClass, label, ...rest }, ref) => {
@@ -19,7 +20,9 @@ const InputField = forwardRef<HTMLInputElement, IProps>(
                     </label>
                 )}
                 <span className={twMerge('relative w-full', inputClass)}>
-                    <Icons.Search className='absolute top-1/2 -translate-y-1/2 left-3' />
+                    {rest?.serchIcon && (
+                        <Icons.Search className='absolute top-1/2 -translate-y-1/2 left-3' />
+                    )}
                     <input
                         {...rest}
                         ref={ref}
@@ -29,7 +32,7 @@ const InputField = forwardRef<HTMLInputElement, IProps>(
                             className
                         )}
                     />
-                    {rest.value && (
+                    {rest.value && rest.serchIcon && (
                         <Icons.X className='absolute top-1/2 -translate-y-1/2 right-3 size-5 stroke-gray-300' />
                     )}
                 </span>

@@ -22,7 +22,7 @@ const ProductCard: FC<IProps> = ({ ...data }) => {
                             {data?.rating}
                             <Icons.Star className='size-5 fill-yellow-600 stroke-yellow-600' />
                         </span>
-                        <p>{data.category.name}</p>
+                        <p>{data?.category?.name}</p>
                     </div>
                 </div>
             </CardContent>

@@ -36,6 +36,7 @@ const SearchInput: FC<IProps> = ({ products }) => {
                 value={query}
                 onChange={handleSearch}
                 onKeyDown={handleKeyDown}
+                serchIcon={true}
                 className='py-1.5 sm:py-2.5'
                 placeholder='Search..'
             />

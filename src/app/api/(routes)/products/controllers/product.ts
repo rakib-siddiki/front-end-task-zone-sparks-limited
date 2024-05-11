@@ -36,7 +36,14 @@ export const onFindProduct = async (id: string) => {
             'category',
             'brand',
             'reviews',
-            'vendor'
+            'vendor',
+            {
+                path: 'category',
+                populate: {
+                    path: 'subCategoryId',
+                    model: 'SubCategory'
+                }
+            }
         ])) as IProduct;
         if (!Product) return errorResponse('Product not found', 404);
         return successResponse(Product);

@@ -8,6 +8,7 @@ import { CategoryModel } from '../(routes)/categories/models';
 import { BrandModel } from '../(routes)/brands/models';
 import ReviewModel from '../(routes)/reviews/models/Review';
 import { VendorModel } from '../(routes)/vendors/models';
+import { SubCategoryModel } from '../(routes)/sub-categories/models';
 
 const MONGO_URI = MONGODB_URI;
 const cached: {
@@ -41,6 +42,7 @@ export const dbConnect = async () => {
                 mongoose.model('Brand', BrandModel);
                 mongoose.model('Review', ReviewModel);
                 mongoose.model('Vendor', VendorModel);
+                mongoose.model('SubCategory', SubCategoryModel);
                 return mongoose;
             })
             .catch((error) => {

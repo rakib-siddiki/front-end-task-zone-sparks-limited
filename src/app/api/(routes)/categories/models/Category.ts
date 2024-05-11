@@ -6,7 +6,7 @@ const categorySchema = new Schema<ICategory>(
     {
         name: { type: String, required: true },
         slug: { type: String, required: true },
-        subCategoryId: [{ type: ObjectId }],
+        subCategoryId: [{ type: ObjectId, ref: 'SubCategory' }],
         subSlug: { type: String },
         imd: { type: String, required: true },
         imdSlug: { type: String, required: true }
