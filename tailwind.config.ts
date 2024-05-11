@@ -10,13 +10,6 @@ const config = {
     ],
     prefix: '',
     theme: {
-        container: {
-            center: true,
-            padding: '2rem',
-            screens: {
-                '2xl': '1400px'
-            }
-        },
         extend: {
             colors: {
                 border: 'hsl(var(--border))',
@@ -51,6 +44,19 @@ const config = {
                 card: {
                     DEFAULT: 'hsl(var(--card))',
                     foreground: 'hsl(var(--card-foreground))'
+                },
+                gray: {
+                    25: '#F3F3F3',
+                    50: '#E7E7E7',
+                    100: '#CFCFCF',
+                    200: '#B7B7B7',
+                    300: '#9F9F9F',
+                    400: '#878787',
+                    500: '#6F6F6F',
+                    600: '#575757',
+                    700: '#3F3F3F',
+                    800: '#272727',
+                    900: '#0F0F0F'
                 }
             },
             borderRadius: {
@@ -71,9 +77,32 @@ const config = {
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out'
+            },
+            fontFamily: {
+                inter: ['var(--font-inter-sans)']
+            },
+            container: {
+                center: true,
+                padding: {
+                    DEFAULT: '1rem',
+                    '2xl': '4.5rem'
+                },
+                screens: {
+                    xl: '1280px',
+                    '2xl': '1400px'
+                }
+            },
+            screens: {
+                xs: '480px',
+                sm: '640px',
+                md: '768px',
+                lg: '1024px',
+                xl: '1280px',
+                '2xl': '1536px'
             }
         }
     },
+
     plugins: [require('tailwindcss-animate')]
 } satisfies Config;
 
