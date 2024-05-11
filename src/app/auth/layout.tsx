@@ -1,6 +1,6 @@
 import { ThemeSwitcher } from '@/components/core';
 import Link from 'next/link';
-
+import { Toaster } from '@/components/ui/toaster';
 export default function PublicLayout({
     children
 }: {
@@ -21,6 +21,7 @@ export default function PublicLayout({
                     </div>
                 </nav>
             </header>
+            <Toaster />
             <main className='container'>{children}</main>
         </div>
     );

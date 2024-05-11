@@ -1,4 +1,5 @@
 export * from './products';
+export * from './user';
 import { API_BASE_URL } from '@/configs/env';
 
 export const http = {
