@@ -10,7 +10,8 @@ import {
     Star,
     Heart,
     Share2,
-    Filter
+    Filter,
+    User
 } from 'lucide-react';
 
 export const Icons = {
@@ -25,6 +26,7 @@ export const Icons = {
     Heart,
     Share2,
     Filter,
+    User,
     EmptyBox: (props: LucideProps) => (
         <svg
             {...props}
@@ -138,7 +140,7 @@ export const Icons = {
             {...props}
             aria-hidden='true'
             role='status'
-            className='inline w-4 h-4 me-3 text-white animate-spin'
+            className='inline w-4 h-4 me-3 text-white dark:text-gray-500 animate-spin'
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'

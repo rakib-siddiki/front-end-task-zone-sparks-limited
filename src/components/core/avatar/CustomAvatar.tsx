@@ -1,11 +1,17 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 import { USER_DROPDOWN_MENUS } from '@/app/(public)/static';
 import { useClickOutside } from '@/app/(public)/(home)/hooks';
-
-const CustomAvatar = () => {
+import { signOutAction } from '@/app/auth/actions';
+interface IProps {
+    id?: string;
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+}
+const CustomAvatar: FC<IProps> = ({ image }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const menuRef = useRef(null);
     useClickOutside(menuRef, () => setDropdownOpen(false));
@@ -16,7 +22,7 @@ const CustomAvatar = () => {
                     <AvatarImage
                         width={32}
                         height={32}
-                        src='https://github.com/shadcn.png'
+                        src={image ?? 'https://github.com/shadcn.png'}
                         alt='avater'
                         className='cursor-pointer'
                     />
@@ -41,16 +47,29 @@ const CustomAvatar = () => {
                         </div>
                         <ul>
                             {(USER_DROPDOWN_MENUS ?? []).map(
-                                ({ label, link, action }) => (
-                                    <Link
-                                        key={label}
-                                        href={action ? '#' : link}
-                                        onClick={action}
-                                        className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
-                                    >
-                                        {label}
-                                    </Link>
-                                )
+                                ({ label, link, action }) =>
+                                    action ? (
+                                        <button
+                                            key={label}
+                                            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                                            onClick={async () =>
+                                                await signOutAction()
+                                            }
+                                            className='block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
+                                        >
+                                            {label}
+                                        </button>
+                                    ) : (
+                                        <Link
+                                            key={label}
+                                            href={action ? '#' : link}
+                                            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                                            onClick={action}
+                                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'
+                                        >
+                                            {label}
+                                        </Link>
+                                    )
                             )}
                         </ul>
                     </div>

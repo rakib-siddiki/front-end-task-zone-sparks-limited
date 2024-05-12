@@ -74,27 +74,9 @@ const SignUpFrom = () => {
     };
     return (
         <>
-            <h1 className='font-bold text-4xl lg:text-5xl mb-8 md:mb-12 whitespace-nowrap'>
+            <h1 className='font-bold leading-10 text-4xl lg:text-5xl mb-8 md:mb-12 text-balance sm:whitespace-nowrap'>
                 Sign Up in Zone Spark
             </h1>
-            <div className='w-full max-w-md mx-auto mb-4'>
-                <form className='flex flex-col items-center gap-4 mb-3'>
-                    {(socialSignUp ?? []).map(({ id, icon, label }) => (
-                        <button
-                            key={id}
-                            className={`w-full flex items-center justify-center text-left gap-3 py-2.5 px-16 border border-primary-500 dark:border-gray-400 rounded  dark:text-gray-200 text-sm whitespace-nowrap transition duration-150 tracking-wide dark:hover:border-gray-300  dark:hover:text-gray-100`}
-                        >
-                            <span className='pl-5'>{icon}</span>
-                            {label}
-                        </button>
-                    ))}
-                </form>
-                <div className='flex items-center gap-3 text-sm text-center'>
-                    <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
-                    or
-                    <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
-                </div>
-            </div>
             <main className='w-full max-w-md mx-auto space-y-6 md:space-y-8'>
                 <form
                     // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -149,7 +131,7 @@ const SignUpFrom = () => {
                             </span>
                         </label>
                     </div>
-                    <div className='flex items-center justify-between'>
+                    <div className='flex items-center justify-between text-sm md:text-base'>
                         <Link href={'/auth/sign-in'} className='font-medium'>
                             Already have an account?
                         </Link>
@@ -175,6 +157,22 @@ const SignUpFrom = () => {
                             )}
                         </Button>
                     </div>
+                </form>
+                <div className='flex items-center gap-3 text-sm text-center'>
+                    <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
+                    or
+                    <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
+                </div>
+                <form className='flex flex-col items-center gap-4'>
+                    {(socialSignUp ?? []).map(({ id, icon, label }) => (
+                        <button
+                            key={id}
+                            className={`w-full flex items-center justify-center text-left gap-3 py-2.5 px-16 border border-primary-500 dark:border-gray-400 rounded  dark:text-gray-200 text-sm whitespace-nowrap transition duration-150 tracking-wide dark:hover:border-gray-300  dark:hover:text-gray-100`}
+                        >
+                            <span className='pl-5'>{icon}</span>
+                            {label}
+                        </button>
+                    ))}
                 </form>
             </main>
         </>

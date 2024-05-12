@@ -13,7 +13,10 @@ export const loginWithCredentials = async (
     callbackUrl?: string | null
 ) => {
     if (!formData.email || !formData.password) {
-        return;
+        return {
+            status: false,
+            error: 'Please enter email and password'
+        };
     }
 
     const { email, password } = formData;
@@ -23,13 +26,14 @@ export const loginWithCredentials = async (
             password: password,
             redirectTo: callbackUrl || DEFAULT_REDIRECT_LOGIIN
         });
+        return { status: true, message: 'Sign in successful' };
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
                 case 'CredentialsSignin':
-                    return { error: 'Invalid credentials' };
+                    return { error: 'Invalid credentials', status: false };
                 default:
-                    return { error: 'Something went wrong!' };
+                    return { error: 'Something went wrong!', status: false };
             }
         }
         throw error;

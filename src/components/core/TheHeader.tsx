@@ -6,8 +6,10 @@ import { LinksDesktop } from './LinksDesktop';
 import CustomAvatar from './avatar/CustomAvatar';
 import Link from 'next/link';
 import { fetchProducts } from '@/app/(public)/httpActions';
+import { auth } from '@/auth';
 const TheHeader = async () => {
     const data = await fetchProducts();
+    const session = await auth();
     return (
         <header className='container'>
             <nav className='flex gap-5 justify-between items-center sm:gap-5 py-3'>
@@ -25,7 +27,14 @@ const TheHeader = async () => {
                             3
                         </span>
                     </span>
-                    <CustomAvatar />
+                    {!session ? (
+                        <Link href='/auth/sign-in'>
+                            <Icons.User className='size-6 dark:stroke-gray-200' />
+                        </Link>
+                    ) : (
+                        <CustomAvatar {...session?.user} />
+                    )}
+
                     <ThemeSwitcher />
                 </div>
             </nav>

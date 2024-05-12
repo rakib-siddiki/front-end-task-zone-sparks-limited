@@ -2,33 +2,65 @@
 import { Icons } from '@/components/core/Icons';
 import { InputField } from '@/components/core';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
+import { loginWithCredentials } from '../actions';
 const socialSignIn = [
     {
         id: 1,
         label: 'Sign In with Google',
         icon: <Icons.Google className='w-4 h-4' />,
         action: 'google'
-    },
-    {
-        id: 2,
-        label: 'Sign In with Google',
-        icon: <Icons.Facebook className='w-4 h-4' />,
-        action: 'facebook'
     }
 ];
 
 const SignInForm = () => {
     const [isHidePass, setIsHidePass] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const formEl = useRef<HTMLFormElement>(null);
+    const { toast } = useToast();
+    const onSubmitForm = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const formData = new FormData(e.currentTarget);
+            const email = formData.get('email') as string;
+            const password = formData.get('password') as string;
 
+            const res = await loginWithCredentials({
+                email,
+                password
+            });
+            if (res?.status === false) {
+                toast({
+                    variant: 'destructive',
+                    title: res.error
+                });
+            }
+            // return res
+        } catch (error) {
+            return toast({
+                variant: 'destructive',
+                title: 'something went wrong'
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <>
-            <h1 className='font-bold text-4xl lg:text-5xl mb-8 md:mb-12 whitespace-nowrap'>
+            <h1 className='font-bold leading-10 text-4xl lg:text-5xl mb-8 md:mb-12 text-balance sm:whitespace-nowrap'>
                 Login in Zone Spark
             </h1>
+
             <div className='w-full mx-auto max-w-md space-y-6 md:space-y-8'>
-                <form className='space-y-4'>
+                <form
+                    //  eslint-disable-next-line @typescript-eslint/no-misused-promises
+                    onSubmit={onSubmitForm}
+                    ref={formEl}
+                    className='space-y-4'
+                >
                     <InputField
                         placeholder='Email address'
                         name='email'
@@ -52,7 +84,7 @@ const SignInForm = () => {
                             )}
                         </span>
                     </div>
-                    <div className='flex items-center justify-between max-sm:text-sm'>
+                    <div className='flex items-center justify-between text-sm md:text-base'>
                         <Link href={'/auth/sign-up'} className='font-medium'>
                             {"Don't"} have an account?
                         </Link>
@@ -63,20 +95,27 @@ const SignInForm = () => {
                             Forget password?
                         </Link>
                     </div>
-                    <Button
-                        variant='default'
-                        size='default'
-                        className='w-full py-2.5 mt-4 md:mt-6 dark:bg-gray-50'
-                    >
-                        Sign in
-                    </Button>
+                    <div className='relative'>
+                        <Button
+                            type='submit'
+                            color='primary'
+                            className='w-full py-2.5 dark:bg-gray-50 mt-4 md:mt-6'
+                        >
+                            {loading ? 'Signing in' : 'Sign in'}
+                            {loading && (
+                                <span className='inline-block ml-3'>
+                                    <Icons.Spin className='dark:stroke-gray-900' />
+                                </span>
+                            )}
+                        </Button>
+                    </div>
                 </form>
                 <div className='flex items-center gap-3 text-sm text-center'>
                     <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
                     or
                     <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
                 </div>
-                <div className='flex flex-col items-center gap-4'>
+                <form className='flex flex-col items-center gap-4'>
                     {(socialSignIn ?? []).map(({ id, icon, label }) => (
                         <button
                             key={id}
@@ -86,7 +125,7 @@ const SignInForm = () => {
                             {label}
                         </button>
                     ))}
-                </div>
+                </form>
             </div>
         </>
     );

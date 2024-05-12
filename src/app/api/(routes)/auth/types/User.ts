@@ -11,7 +11,7 @@ export interface IUserSignupPayload {
     name: string;
     email: string;
     image?: string;
-    password: string | undefined;
+    password?: string | undefined;
 }
 
 export interface IUserRespose {

@@ -1,3 +1,4 @@
+import { signOutAction } from '@/app/auth/actions';
 export const USER_DROPDOWN_MENUS = [
     {
         label: 'Dashboard',
@@ -13,6 +14,6 @@ export const USER_DROPDOWN_MENUS = [
     },
     {
         label: 'Sign out',
-        action: () => {}
+        action: () => signOutAction()
     }
 ];
