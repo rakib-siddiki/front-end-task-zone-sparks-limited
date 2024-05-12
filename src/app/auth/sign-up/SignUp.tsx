@@ -16,6 +16,7 @@ const socialSignUp = [
         action: 'google'
     }
 ];
+console.log('🚀 > socialSignUp:', socialSignUp);
 const SignUpFrom = () => {
     const [isHidePass, setIsHidePass] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -158,7 +159,7 @@ const SignUpFrom = () => {
                         </Button>
                     </div>
                 </form>
-                <div className='flex items-center gap-3 text-sm text-center'>
+                {/* <div className='flex items-center gap-3 text-sm text-center'>
                     <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
                     or
                     <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
@@ -173,7 +174,7 @@ const SignUpFrom = () => {
                             {label}
                         </button>
                     ))}
-                </form>
+                </form> */}
             </main>
         </>
     );

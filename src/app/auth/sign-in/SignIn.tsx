@@ -14,6 +14,7 @@ const socialSignIn = [
         action: 'google'
     }
 ];
+console.log('🚀 > socialSignIn:', socialSignIn);
 
 const SignInForm = () => {
     const [isHidePass, setIsHidePass] = useState(false);
@@ -110,7 +111,7 @@ const SignInForm = () => {
                         </Button>
                     </div>
                 </form>
-                <div className='flex items-center gap-3 text-sm text-center'>
+                {/* <div className='flex items-center gap-3 text-sm text-center'>
                     <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
                     or
                     <span className='h-px w-full bg-gray-50 dark:bg-gray-400'></span>
@@ -125,7 +126,7 @@ const SignInForm = () => {
                             {label}
                         </button>
                     ))}
-                </form>
+                </form> */}
             </div>
         </>
     );
